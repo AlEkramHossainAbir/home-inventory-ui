@@ -16,6 +16,18 @@ export function useLogin() {
       localStorage.setItem('attachmentToken', data.attachmentToken);
       localStorage.setItem('tokenExpiry', data.expiresAt);
       
+      // Store user information if available
+      if (data.user) {
+        localStorage.setItem('user', JSON.stringify(data.user));
+      } else {
+        // If no user object, store the username from the request
+        localStorage.setItem('user', JSON.stringify({ 
+          username: data.token, // Placeholder
+          email: '',
+          name: '' 
+        }));
+      }
+      
       // Redirect to dashboard
       router.push('/dashboard');
     },

@@ -22,7 +22,7 @@ export default function LoginPage() {
       password: "",
       stayLoggedIn: false,
     },
-  });
+  } as const);
 
   const onSubmit = async (data: LoginFormData) => {
     try {
