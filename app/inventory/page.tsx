@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Sidebar from "@/components/layout/Sidebar";
 import { Search, Download, Plus, X, MoreVertical } from "lucide-react";
 import Image from "next/image";
@@ -10,6 +11,7 @@ export default function InventoryPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const [openActionMenuId, setOpenActionMenuId] = useState<string | null>(null);
 
   const { items, total, pageSize } = dummyInventoryData;
   const totalPages = Math.ceil(total / pageSize);
@@ -184,9 +186,12 @@ export default function InventoryPage() {
                           />
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-gray-900">
+                          <Link 
+                            href={`/inventory/${item.id}`}
+                            className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline"
+                          >
                             {item.name}
-                          </p>
+                          </Link>
                           <p className="text-xs text-gray-500">
                             Model: {item.assetId}
                           </p>
@@ -232,9 +237,51 @@ export default function InventoryPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <button className="p-1 hover:bg-gray-100 rounded transition-colors">
-                        <MoreVertical className="w-5 h-5 text-gray-400" />
-                      </button>
+                      <div className="relative">
+                        <button 
+                          onClick={() => setOpenActionMenuId(openActionMenuId === item.id ? null : item.id)}
+                          className="p-1 hover:bg-gray-100 rounded transition-colors"
+                        >
+                          <MoreVertical className="w-5 h-5 text-gray-400" />
+                        </button>
+                        {openActionMenuId === item.id && (
+                          <>
+                            <div 
+                              className="fixed inset-0 z-10" 
+                              onClick={() => setOpenActionMenuId(null)}
+                            />
+                            <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-20">
+                              <div className="py-1">
+                                <Link
+                                  href={`/inventory/${item.id}`}
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  onClick={() => setOpenActionMenuId(null)}
+                                >
+                                  View Details
+                                </Link>
+                                <button
+                                  className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  onClick={() => setOpenActionMenuId(null)}
+                                >
+                                  Edit
+                                </button>
+                                <button
+                                  className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  onClick={() => setOpenActionMenuId(null)}
+                                >
+                                  Duplicate
+                                </button>
+                                <button
+                                  className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                                  onClick={() => setOpenActionMenuId(null)}
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))}

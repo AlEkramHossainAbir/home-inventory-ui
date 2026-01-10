@@ -21,7 +21,7 @@ export interface Item {
   createdAt: string;
   description: string;
   id: string;
-  imageId: string;
+  imageId?: string;
   insured: boolean;
   labels: Label[];
   location: Location;
@@ -29,8 +29,41 @@ export interface Item {
   purchasePrice: number;
   quantity: number;
   soldTime: string;
-  thumbnailId: string;
+  thumbnailId?: string;
   updatedAt: string;
+}
+
+export interface ItemDetail extends Item {
+  syncChildItemsLocations?: boolean;
+  serialNumber?: string;
+  modelNumber?: string;
+  manufacturer?: string;
+  lifetimeWarranty?: boolean;
+  warrantyExpires?: string;
+  warrantyDetails?: string;
+  purchaseTime?: string;
+  purchaseFrom?: string;
+  soldTo?: string;
+  soldPrice?: number;
+  soldNotes?: string;
+  notes?: string;
+  attachments?: Attachment[];
+  fields?: CustomField[];
+}
+
+export interface Attachment {
+  id: string;
+  type: string;
+  url: string;
+  name: string;
+  createdAt: string;
+}
+
+export interface CustomField {
+  id: string;
+  name: string;
+  value: string;
+  type: string;
 }
 
 export interface InventoryResponse {
