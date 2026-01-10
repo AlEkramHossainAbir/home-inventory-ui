@@ -47,11 +47,16 @@ body {
   color: #0f172a;
   font-family: "Inter", sans-serif;
 }
+
 .sub-text-secondary{
   color: #64748B;
 }
 .login-container{
   box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.remember-me,
+.login-container label{
+  color: #334155;
 }
 .btn-primary {
   background-color: #3b82f6;
@@ -63,4 +68,7 @@ body {
 
 .focus-ring-primary:focus {
   ring-color: #3b82f6;
+}
+.bottom-footer-text{
+  color: #64748B;
 }

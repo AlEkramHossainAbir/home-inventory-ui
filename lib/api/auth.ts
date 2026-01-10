@@ -1,20 +1,26 @@
 import { type LoginRequest, type LoginResponse } from '@/types/auth';
 
-const API_BASE_URL = 'http://4.213.57.100:3100/api/v1';
+// Use Next.js API proxy to avoid CORS issues
+const USE_PROXY = true;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+if (!USE_PROXY && !API_BASE_URL) {
+  throw new Error('NEXT_PUBLIC_API_BASE_URL is not defined. Please check your .env.local file.');
+}
 
 export async function loginUser(credentials: LoginRequest): Promise<LoginResponse> {
-  console.log('Attempting login to:', `${API_BASE_URL}/users/login`);
+  const url = USE_PROXY ? '/api/auth/login' : `${API_BASE_URL}/users/login`;
+  
+  console.log('Attempting login to:', url);
   console.log('Credentials:', credentials);
   
   try {
-    const response = await fetch(`${API_BASE_URL}/users/login`, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      mode: 'cors',
-      credentials: 'omit',
       body: JSON.stringify(credentials),
     });
 

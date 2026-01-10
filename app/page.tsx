@@ -3,7 +3,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { Eye, EyeOff, User } from "lucide-react";
 import Image from "next/image";
 import { loginSchema, type LoginFormData } from "@/lib/validations/auth";
 import { useLogin } from "@/hooks/useLogin";
@@ -49,7 +48,9 @@ export default function LoginPage() {
           />
 
           <div className="flex flex-col gap-3 text-center">
-            <div className="text-2xl font-semibold text-center organize-title">Organize Everything</div>
+            <div className="text-2xl font-semibold text-center organize-title">
+              Organize Everything
+            </div>
             <p className="organize-description text-base font-normal">
               Keep track of your belongings, warranties, and important
               <br />
@@ -74,7 +75,9 @@ export default function LoginPage() {
               />
             </div>
             <div className="flex flex-col gap-1">
-              <div className="text-2xl font-bold leading-none heading-primary">Home Inventory</div>
+              <div className="text-2xl font-bold leading-none heading-primary">
+                Home Inventory
+              </div>
               <div className="font-normal text-sm leading-none sub-text-secondary">
                 Track and organize your things
               </div>
@@ -92,7 +95,7 @@ export default function LoginPage() {
               <div>
                 <label
                   htmlFor="username"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium mb-2"
                 >
                   Username
                 </label>
@@ -111,7 +114,13 @@ export default function LoginPage() {
                       errors.username ? "username-error" : undefined
                     }
                   />
-                  <User className="absolute right-3 top-3 w-5 h-5 text-gray-400" />
+                  <Image
+                    src="/user.svg"
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="absolute right-3 top-3 w-5 h-5"
+                  />
                 </div>
                 {errors.username && (
                   <p
@@ -155,11 +164,13 @@ export default function LoginPage() {
                       showPassword ? "Hide password" : "Show password"
                     }
                   >
-                    {showPassword ? (
-                      <EyeOff className="w-5 h-5" />
-                    ) : (
-                      <Eye className="w-5 h-5" />
-                    )}
+                    <Image
+                      src="/eye.svg"
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="w-5 h-5"
+                    />
                   </button>
                 </div>
                 {errors.password && (
@@ -182,7 +193,7 @@ export default function LoginPage() {
                     className="w-4 h-4 border-gray-300 rounded focus:ring-2"
                     style={{ accentColor: "#3B82F6" }}
                   />
-                  <span className="ml-2 text-sm text-gray-600">
+                  <span className="ml-2 text-sm font-normal remember-me">
                     Remember me
                   </span>
                 </label>
@@ -212,7 +223,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loginMutation.isPending}
-                className="w-full btn-primary text-white font-medium py-2.5 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full btn-primary text-white font-medium py-2.5 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-6"
                 aria-label="Sign in to your account"
               >
                 {loginMutation.isPending ? (
@@ -243,20 +254,14 @@ export default function LoginPage() {
                 ) : (
                   <>
                     Sign in
-                    <svg
+                    <Image
+                      src="/right-arrow.svg"
+                      alt=""
+                      width={16}
+                      height={16}
                       className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
                       aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+                    />
                   </>
                 )}
               </button>
@@ -276,20 +281,23 @@ export default function LoginPage() {
           </div>
 
           {/* Footer Links */}
-          <div className="mt-6 flex items-center justify-center gap-4 text-xs text-gray-500">
-            <span>Version 1.2.4</span>
-            <span>•</span>
-            <a href="#" className="hover:text-gray-700">
-              Help Center
-            </a>
-            <span>•</span>
-            <a href="#" className="hover:text-gray-700">
-              Privacy Policy
-            </a>
-            <span>•</span>
-            <a href="#" className="hover:text-gray-700">
-              Terms of Service
-            </a>
+          <div className="mt-8 flex flex-col items-center justify-center gap-2 text-xs bottom-footer-text">
+            <div>
+              <span>Version 1.2.4</span>
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <a href="#" className="hover:text-gray-700">
+                Help Center
+              </a>
+              <span>•</span>
+              <a href="#" className="hover:text-gray-700">
+                Privacy Policy
+              </a>
+              <span>•</span>
+              <a href="#" className="hover:text-gray-700">
+                Terms of Service
+              </a>
+            </div>
           </div>
         </div>
       </div>
