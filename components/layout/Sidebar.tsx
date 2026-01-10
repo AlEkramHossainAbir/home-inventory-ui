@@ -5,29 +5,18 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import {
-  LayoutDashboard,
-  Package,
-  MapPin,
-  Tag,
-  Receipt,
-  BarChart3,
-  Settings,
-  Sliders,
-  User,
   MoreVertical,
   LogOut,
 } from "lucide-react";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
-  { icon: Package, label: "Inventory", href: "/inventory" },
-  { icon: MapPin, label: "Locations", href: "/locations" },
-  { icon: Tag, label: "Labels", href: "/labels" },
-  { icon: Receipt, label: "Receipts", href: "/receipts" },
-  { icon: BarChart3, label: "Reports", href: "/reports" },
-  { icon: Settings, label: "Settings", href: "/settings" },
-  { icon: Sliders, label: "Preference", href: "/preference" },
-  { icon: User, label: "Profile", href: "/profile" },
+  { icon: "/dashboard.svg", label: "Dashboard", href: "/dashboard" },
+  { icon: "/inventory.svg", label: "Inventory", href: "/inventory" },
+  { icon: "/locations.svg", label: "Locations", href: "/locations" },
+  { icon: "/labels.svg", label: "Labels", href: "/labels" },
+  { icon: "/receipts.svg", label: "Receipts", href: "/receipts" },
+  { icon: "/settings.svg", label: "Settings", href: "/settings" },
+  { icon: "/user.svg", label: "Profile", href: "/profile" },
 ];
 
 export default function Sidebar() {
@@ -110,7 +99,6 @@ export default function Sidebar() {
         <ul className="space-y-1 px-3">
           {menuItems.map((item) => {
             const isActive = pathname === item.href;
-            const Icon = item.icon;
 
             return (
               <li key={item.href}>
@@ -122,7 +110,18 @@ export default function Sidebar() {
                       : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
                   }`}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Image
+                    src={item.icon}
+                    alt={item.label}
+                    width={20}
+                    height={20}
+                    className="w-5 h-5"
+                    style={{
+                      filter: isActive 
+                        ? 'invert(45%) sepia(98%) saturate(1853%) hue-rotate(201deg) brightness(100%) contrast(93%)'
+                        : 'invert(36%) sepia(11%) saturate(896%) hue-rotate(181deg) brightness(96%) contrast(91%)'
+                    }}
+                  />
                   <span>{item.label}</span>
                 </Link>
               </li>
