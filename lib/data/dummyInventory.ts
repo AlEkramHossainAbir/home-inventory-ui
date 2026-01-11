@@ -12,7 +12,7 @@ export const dummyInventoryData: InventoryResponse = {
       insured: false,
       labels: [
         {
-          color: "#3B82F6",
+          color: "#1D4ED8",
           createdAt: "2024-01-01T00:00:00Z",
           description: "Power tools",
           id: "label1",
@@ -20,7 +20,7 @@ export const dummyInventoryData: InventoryResponse = {
           updatedAt: "2024-01-01T00:00:00Z",
         },
         {
-          color: "#10B981",
+          color: "#15803D",
           createdAt: "2024-01-01T00:00:00Z",
           description: "Has warranty",
           id: "label2",
@@ -52,7 +52,7 @@ export const dummyInventoryData: InventoryResponse = {
       insured: false,
       labels: [
         {
-          color: "#8B5CF6",
+          color: "#7E22CE",
           createdAt: "2024-01-01T00:00:00Z",
           description: "Electronic devices",
           id: "label3",
@@ -60,7 +60,7 @@ export const dummyInventoryData: InventoryResponse = {
           updatedAt: "2024-01-01T00:00:00Z",
         },
         {
-          color: "#10B981",
+          color: "#15803D",
           createdAt: "2024-01-01T00:00:00Z",
           description: "Has warranty",
           id: "label2",
@@ -92,7 +92,7 @@ export const dummyInventoryData: InventoryResponse = {
       insured: false,
       labels: [
         {
-          color: "#EF4444",
+          color: "#C2410C",
           createdAt: "2024-01-01T00:00:00Z",
           description: "Appliances",
           id: "label4",
@@ -124,7 +124,7 @@ export const dummyInventoryData: InventoryResponse = {
       insured: false,
       labels: [
         {
-          color: "#22D3EE",
+          color: "#0F766E",
           createdAt: "2024-01-01T00:00:00Z",
           description: "Outdoor equipment",
           id: "label5",
@@ -132,7 +132,7 @@ export const dummyInventoryData: InventoryResponse = {
           updatedAt: "2024-01-01T00:00:00Z",
         },
         {
-          color: "#F59E0B",
+          color: "#A16207",
           createdAt: "2024-01-01T00:00:00Z",
           description: "Seasonal items",
           id: "label6",
@@ -164,7 +164,7 @@ export const dummyInventoryData: InventoryResponse = {
       insured: true,
       labels: [
         {
-          color: "#8B5CF6",
+          color: "#7E22CE",
           createdAt: "2024-01-01T00:00:00Z",
           description: "Electronic devices",
           id: "label3",
@@ -172,7 +172,7 @@ export const dummyInventoryData: InventoryResponse = {
           updatedAt: "2024-01-01T00:00:00Z",
         },
         {
-          color: "#10B981",
+          color: "#15803D",
           createdAt: "2024-01-01T00:00:00Z",
           description: "Has warranty",
           id: "label2",
@@ -180,7 +180,7 @@ export const dummyInventoryData: InventoryResponse = {
           updatedAt: "2024-01-01T00:00:00Z",
         },
         {
-          color: "#DC2626",
+          color: "#B91C1C",
           createdAt: "2024-01-01T00:00:00Z",
           description: "High value items",
           id: "label7",
@@ -212,7 +212,7 @@ export const dummyInventoryData: InventoryResponse = {
       insured: false,
       labels: [
         {
-          color: "#EF4444",
+          color: "#C2410C",
           createdAt: "2024-01-01T00:00:00Z",
           description: "Appliances",
           id: "label4",
