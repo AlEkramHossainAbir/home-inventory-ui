@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import Sidebar from "@/components/layout/Sidebar";
-import { Search, Download, Plus, X, MoreVertical } from "lucide-react";
 import Image from "next/image";
 import { dummyInventoryData } from "@/lib/data/dummyInventory";
 

@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useLocations } from "@/hooks/useLocations";
 import { type LocationItem } from "@/types/location";
+import Image from "next/image";
 
 export default function LocationsPage() {
   const { data: locations, isLoading, error } = useLocations();
@@ -56,7 +57,12 @@ export default function LocationsPage() {
     const name = locationName.toLowerCase();
     if (name.includes("home") || name.includes("living")) return "🏠";
     if (name.includes("garage")) return "🚗";
-    if (name.includes("storage") || name.includes("attic") || name.includes("basement")) return "📦";
+    if (
+      name.includes("storage") ||
+      name.includes("attic") ||
+      name.includes("basement")
+    )
+      return "📦";
     if (name.includes("kitchen")) return "🍳";
     if (name.includes("bedroom")) return "🛏️";
     if (name.includes("bathroom")) return "🚿";
@@ -72,20 +78,32 @@ export default function LocationsPage() {
         {/* Top Header */}
         <div className="bg-white border-b border-gray-200 px-8 py-4">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-semibold text-gray-900">
+            <div className="flex items-center gap-4">
+              <h1 className="text-xl font-semibold text-[#0F172A]">
                 Locations
               </h1>
-              <p className="text-sm text-gray-500 mt-0.5">
+              <p className="text-sm font-normal text-[#64748B]">
                 Organize your items by location
               </p>
             </div>
             <div className="flex items-center gap-3">
               <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <Bell className="w-5 h-5 text-gray-600" />
+                <Image
+                  src="/bell.svg"
+                  alt=""
+                  width={12}
+                  height={12}
+                  className="w-4.5 h-4.5"
+                />
               </button>
               <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <HelpCircle className="w-5 h-5 text-gray-600" />
+                <Image
+                  src="/question.svg"
+                  alt=""
+                  width={12}
+                  height={12}
+                  className="w-4.5 h-4.5"
+                />
               </button>
             </div>
           </div>
@@ -95,24 +113,41 @@ export default function LocationsPage() {
         <div className="flex-1 flex overflow-hidden">
           {/* Left Panel - Locations List */}
           <div className="w-96 bg-white border-r border-gray-200 flex flex-col">
-            <div className="p-4 space-y-3">
+            <div className="space-y-3">
               {/* Search Box */}
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search locations..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
-                />
+              <div className="px-4 pt-4 pb-1">
+                <div className="relative">
+                  <Image
+                    src="/search.svg"
+                    alt=""
+                    width={12}
+                    height={12}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
+                  />
+
+                  <input
+                    type="text"
+                    placeholder="Search locations..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-9 pr-4 py-2 font-normal text-[#9CA3AF] placeholder:text-[#9CA3AF]  placeholder:font-normal placeholder:text-[16px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
+                  />
+                </div>
               </div>
 
               {/* New Location Button */}
-              <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
-                <Plus className="w-4 h-4" />
-                New Location
-              </button>
+              <div className="p-4 border-t border-b border-[#E2E8F0]">
+                <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-white bg-[#3B82F6] rounded-lg shadow-[0px_1px_2px_0px_#0000000D] hover:bg-blue-700 transition-colors text-sm font-medium">
+                  <Image
+                    src="/plus.svg"
+                    alt=""
+                    width={12}
+                    height={12}
+                    className="w-3.5 h-3.5"
+                  />
+                  New Location
+                </button>
+              </div>
             </div>
 
             {/* Locations List */}
@@ -136,27 +171,27 @@ export default function LocationsPage() {
               )}
 
               {filteredLocations && filteredLocations.length > 0 && (
-                <div className="space-y-1 px-2 pb-4">
+                <div className="space-y-1 p-4">
                   {filteredLocations.map((location) => (
                     <button
                       key={location.id}
                       onClick={() => setSelectedLocation(location)}
-                      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left ${
+                      className={`w-full flex items-center gap-2 py-2 pr-3 pl-8 rounded-lg transition-colors text-left ${
                         selectedLocation?.id === location.id
                           ? "bg-blue-50 text-blue-700"
                           : "text-gray-700 hover:bg-gray-50"
                       }`}
                     >
-                      <span className="text-2xl">
+                      <span className="text-xl">
                         {getLocationIcon(location.name)}
                       </span>
                       <div className="flex-1 min-w-0">
-                        <div className="text-sm font-medium truncate">
+                        <div className="text-sm font-medium text-[#0F172A] truncate">
                           {location.name}
                         </div>
                       </div>
                       <span
-                        className={`text-sm font-medium ${
+                        className={`text-xs font-normal text-[#64748B] ${
                           selectedLocation?.id === location.id
                             ? "text-blue-700"
                             : "text-gray-500"
@@ -175,7 +210,9 @@ export default function LocationsPage() {
           <div className="flex-1 overflow-y-auto p-8">
             {!selectedLocation && (
               <div className="flex items-center justify-center h-full">
-                <p className="text-gray-500">Select a location to view details</p>
+                <p className="text-gray-500">
+                  Select a location to view details
+                </p>
               </div>
             )}
 
