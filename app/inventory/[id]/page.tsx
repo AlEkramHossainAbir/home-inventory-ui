@@ -5,15 +5,9 @@ import { useRouter } from "next/navigation";
 import Sidebar from "@/components/layout/Sidebar";
 import { useItemDetail } from "@/hooks/useItemDetail";
 import {
-  ChevronRight,
-  MapPin,
-  Calendar,
-  DollarSign,
   Shield,
   FileText,
-  Edit,
   Paperclip,
-  Trash2,
   Activity,
   Plus,
 } from "lucide-react";

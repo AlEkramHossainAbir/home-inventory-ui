@@ -3,14 +3,7 @@
 import { useState } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import {
-  Search,
   Plus,
-  Home,
-  ChevronRight,
-  Pencil,
-  Trash2,
-  Bell,
-  HelpCircle,
 } from "lucide-react";
 import { useLocations } from "@/hooks/useLocations";
 import { type LocationItem } from "@/types/location";
