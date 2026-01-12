@@ -71,24 +71,49 @@ export default function ItemDetailPage({ params }: { params: Promise<{ id: strin
 
       <main className="flex-1 overflow-auto">
         {/* Top Navigation */}
-        <div className="bg-white border-b border-gray-200 px-8 py-4">
-          <div className="flex items-center justify-between max-w-7xl mx-auto">
+        <div className="bg-white border-b border-gray-200 px-6 py-4">
+          <div className="flex items-center justify-between  mx-auto">
             <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Link href="/inventory" className="hover:text-gray-900">Inventory</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-gray-900 font-medium">{item.name}</span>
+              <Link href="/inventory" className="text-[#64748B] text-sm hover:text-gray-900">Inventory</Link>
+              <Image
+                  src="/chevron-right.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                  className="w-3 h-3"
+                />
+              <span className="text-[#0F172A] text-sm font-medium">{item.name}</span>
             </div>
             <div className="flex items-center gap-3">
-              <button className="flex items-center gap-2 px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                <Edit className="w-4 h-4" />
+              <button className="flex items-center gap-2 px-4 py-2 font-medium text-sm text-gray-700 border border-[#CBD5E1] rounded-lg hover:bg-gray-50 transition-colors">
+               <Image
+                  src="/pen.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                  className="w-3 h-3"
+                />
                 Edit
               </button>
-              <button className="flex items-center gap-2 px-4 py-2 text-blue-600 border border-blue-200 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                <Paperclip className="w-4 h-4" />
+              <button className="flex items-center gap-2 px-4 py-2 font-medium text-sm text-[#334155] border border-[#CBD5E1]  rounded-lg hover:bg-gray-50 transition-colors">
+                
+                 <Image
+                  src="/attachment.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                  className="w-3 h-3"
+                />
                 Add Attachment
               </button>
-              <button className="flex items-center gap-2 px-4 py-2 text-red-600 border border-red-200 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
-                <Trash2 className="w-4 h-4" />
+              <button className="flex items-center gap-2 px-4 py-2 font-medium text-sm text-[#EF4444] border border-[#FECACA] rounded-lg hover:bg-red-100 transition-colors">
+                <Image
+                  src="/trash.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                  className="w-3 h-3"
+                />
                 Delete
               </button>
             </div>
@@ -96,19 +121,19 @@ export default function ItemDetailPage({ params }: { params: Promise<{ id: strin
         </div>
 
         {/* Content */}
-        <div className="p-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="p-6 bg-white">
+          <div className="mx-auto">
             {/* Header */}
             <div className="mb-6">
-              <h1 className="text-3xl font-semibold text-gray-900 mb-2">{item.name}</h1>
+              <h1 className="text-3xl font-bold text-[#0F172A] mb-2">{item.name}</h1>
               <div className="flex items-center gap-2">
                 {item.labels.map((label) => (
                   <span
                     key={label.id}
-                    className="px-3 py-1 rounded-lg text-sm font-medium"
+                    className="px-3 py-1 rounded-[9999px] text-xs font-medium"
                     style={{
-                      backgroundColor: `${label.color === 'teal' ? '#14B8A6' : label.color === 'blue' ? '#3B82F6' : label.color}15`,
-                      color: label.color === 'teal' ? '#14B8A6' : label.color === 'blue' ? '#3B82F6' : label.color,
+                      backgroundColor: `${label.color === 'teal' ? '#DCFCE7' : label.color === 'blue' ? '#DBEAFE' : label.color}15`,
+                      color: label.color === 'teal' ? '#15803D' : label.color === 'blue' ? '#1D4ED8' : label.color,
                     }}
                   >
                     {label.name}
@@ -126,19 +151,11 @@ export default function ItemDetailPage({ params }: { params: Promise<{ id: strin
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
               {/* Left: Image Gallery */}
               <div className="lg:col-span-2">
-                <div className="bg-gray-100 rounded-lg aspect-video flex items-center justify-center">
-                  <div className="text-center text-gray-400">
-                    <Image
-                      src="/Home.svg"
-                      alt=""
-                      width={100}
-                      height={100}
-                      className="mx-auto opacity-50"
-                    />
-                    <p className="mt-4">No image available</p>
+                <div className="bg-white rounded-lg h-139 w-139 p-6 border border-[#E2E8F0] relative">
+                 <div className="w-full h-full bg-[#F1F5F9]">
+                    
                   </div>
-                </div>
-                <div className="mt-4 grid grid-cols-4 gap-2">
+                  <div className="mt-4 grid grid-cols-4 gap-2 absolute w-full h-full">
                   <button className="aspect-square border-2 border-blue-600 rounded-lg bg-white flex items-center justify-center">
                     <Plus className="w-6 h-6 text-gray-400" />
                   </button>
@@ -146,6 +163,8 @@ export default function ItemDetailPage({ params }: { params: Promise<{ id: strin
                     <div key={i} className="aspect-square border border-gray-200 rounded-lg bg-white"></div>
                   ))}
                 </div>
+                </div>
+                
               </div>
 
               {/* Right: Key Details */}
