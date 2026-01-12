@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Sidebar from "@/components/layout/Sidebar";
 import Image from "next/image";
 import { dummyInventoryData } from "@/lib/data/dummyInventory";
 
 export default function InventoryPage() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
@@ -200,7 +202,21 @@ export default function InventoryPage() {
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {items.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50">
+                  <tr 
+                    key={item.id} 
+                    className="hover:bg-gray-50 cursor-pointer"
+                    onClick={(e) => {
+                      // Don't navigate if clicking on checkbox, action menu, or links
+                      if (
+                        (e.target as HTMLElement).closest('input[type="checkbox"]') ||
+                        (e.target as HTMLElement).closest('button') ||
+                        (e.target as HTMLElement).closest('a')
+                      ) {
+                        return;
+                      }
+                      router.push(`/inventory/${item.id}`);
+                    }}
+                  >
                     <td className="px-6 py-4">
                       <input
                         type="checkbox"
@@ -224,12 +240,11 @@ export default function InventoryPage() {
                           />
                         </div>
                         <div>
-                          <Link
-                            href={`/inventory/${item.id}`}
+                          <div
                             className="text-base font-medium tracking-normal align-middle text-[#0F172A]"
                           >
                             {item.name}
-                          </Link>
+                          </div>
                           <p className="font-normal text-[14px] text-[#64748B] align-middle">
                             Model: {item.assetId}
                           </p>
