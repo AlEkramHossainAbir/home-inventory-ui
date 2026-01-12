@@ -56,11 +56,11 @@ export default function InventoryPage() {
 
       <main className="flex-1 overflow-auto">
         {/* Top Navbar */}
-        <div className="bg-white border-b border-gray-200 px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4 flex-1">
-              <h1 className="text-2xl font-bold text-[#0F172A]">Inventory</h1>
-              <div className="relative flex-1 max-w-md">
+        <div className="bg-white border-b border-gray-200 px-4 sm:px-6 md:px-8 py-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-4 flex-1 w-full sm:w-auto">
+              <h1 className="text-xl sm:text-2xl font-bold text-[#0F172A]">Inventory</h1>
+              <div className="relative flex-1 max-w-md w-full sm:w-auto">
                 <Image
                   src="/search.svg"
                   alt=""
@@ -78,8 +78,8 @@ export default function InventoryPage() {
                 />
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <button className="flex items-center gap-2 py-[10px] px-[16px] text-[#334155] bg-white border border-[#CBD5E1] rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+            <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
+              <button className="flex items-center gap-2 py-[10px] px-3 sm:px-[16px] text-sm sm:text-base text-[#334155] bg-white border border-[#CBD5E1] rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                 <Image
                   src="/export.svg"
                   alt=""
@@ -87,9 +87,9 @@ export default function InventoryPage() {
                   height={16}
                   className="w-4 h-4"
                 />
-                Export
+                <span className="hidden sm:inline">Export</span>
               </button>
-              <button className="flex items-center gap-2 opacity-100 py-[10px] px-[20px] text-base text-white bg-[#3B82F6] rounded-lg hover:bg-blue-700 cursor-pointer shadow-[0px_1px_2px_0px_#0000000D] transition-colors">
+              <button className="flex items-center gap-2 opacity-100 py-[10px] px-4 sm:px-[20px] text-sm sm:text-base text-white bg-[#3B82F6] rounded-lg hover:bg-blue-700 cursor-pointer shadow-[0px_1px_2px_0px_#0000000D] transition-colors whitespace-nowrap">
                 <Image
                   src="/plus.svg"
                   alt=""
@@ -104,8 +104,8 @@ export default function InventoryPage() {
         </div>
 
         {/* Filters */}
-        <div className="px-8 py-4 bg-white border-b border-[#E2E8F0]">
-          <div className="flex items-center justify-between">
+        <div className="px-4 sm:px-6 md:px-8 py-4 bg-white border-b border-[#E2E8F0]">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
             <div className="flex items-center gap-3">
               <span className="text-sm font-medium text-[#334155]">
                 Filters:
@@ -164,8 +164,8 @@ export default function InventoryPage() {
         </div>
 
         {/* Table */}
-        <div className="p-8 bg-white">
-          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+        <div className="p-4 sm:p-6 md:p-8 bg-white">
+          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden overflow-x-auto">
             <table className="w-full">
               <thead className="border-b border-slate-200">
                 <tr>
@@ -348,8 +348,8 @@ export default function InventoryPage() {
             </table>
 
             {/* Pagination */}
-            <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 bg-white">
-              <div className="text-sm font-normal text-[#475569]">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-4 sm:px-6 py-4 border-t border-gray-200 bg-white">
+              <div className="text-xs sm:text-sm font-normal text-[#475569]">
                 Showing <span className="font-medium">1-{items.length}</span> of{" "}
                 <span className="font-medium">{total}</span> items
               </div>

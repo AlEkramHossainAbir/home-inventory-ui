@@ -81,8 +81,8 @@ export default function ItemDetailPage({
 
       <main className="flex-1 overflow-auto">
         {/* Top Navigation */}
-        <div className="bg-white border-b border-gray-200 px-6 py-4">
-          <div className="flex items-center justify-between  mx-auto">
+        <div className="bg-white border-b border-gray-200 px-4 sm:px-6 py-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mx-auto">
             <div className="flex items-center gap-2 text-sm text-gray-600">
               <Link
                 href="/inventory"
@@ -101,8 +101,8 @@ export default function ItemDetailPage({
                 {item.name}
               </span>
             </div>
-            <div className="flex items-center gap-3">
-              <button className="flex items-center gap-2 px-4 py-2 font-medium text-sm text-gray-700 border border-[#CBD5E1] rounded-lg hover:bg-gray-50 transition-colors">
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap w-full sm:w-auto">
+              <button className="flex items-center gap-2 px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm text-gray-700 border border-[#CBD5E1] rounded-lg hover:bg-gray-50 transition-colors">
                 <Image
                   src="/pen.svg"
                   alt=""
@@ -110,9 +110,9 @@ export default function ItemDetailPage({
                   height={16}
                   className="w-3 h-3"
                 />
-                Edit
+                <span className="hidden sm:inline">Edit</span>
               </button>
-              <button className="flex items-center gap-2 px-4 py-2 font-medium text-sm text-[#334155] border border-[#CBD5E1]  rounded-lg hover:bg-gray-50 transition-colors">
+              <button className="flex items-center gap-2 px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm text-[#334155] border border-[#CBD5E1]  rounded-lg hover:bg-gray-50 transition-colors">
                 <Image
                   src="/attachment.svg"
                   alt=""
@@ -120,9 +120,9 @@ export default function ItemDetailPage({
                   height={16}
                   className="w-3 h-3"
                 />
-                Add Attachment
+                <span className="hidden md:inline">Add Attachment</span>
               </button>
-              <button className="flex items-center gap-2 px-4 py-2 font-medium text-sm text-[#EF4444] border border-[#FECACA] rounded-lg hover:bg-red-100 transition-colors">
+              <button className="flex items-center gap-2 px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm text-[#EF4444] border border-[#FECACA] rounded-lg hover:bg-red-100 transition-colors">
                 <Image
                   src="/trash.svg"
                   alt=""
@@ -130,18 +130,18 @@ export default function ItemDetailPage({
                   height={16}
                   className="w-3 h-3"
                 />
-                Delete
+                <span className="hidden sm:inline">Delete</span>
               </button>
             </div>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-6 bg-white">
+        <div className="p-4 sm:p-6 bg-white">
           <div className="mx-auto">
             {/* Header */}
-            <div className="mb-6">
-              <h1 className="text-3xl font-bold text-[#0F172A] mb-2">
+            <div className="mb-4 sm:mb-6">
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-2">
                 {item.name}
               </h1>
               <div className="flex items-center gap-2">
@@ -177,10 +177,10 @@ export default function ItemDetailPage({
             </div>
 
             {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
               {/* Left: Image Gallery */}
               <div className="lg:col-span-1">
-                <div className="bg-white rounded-lg h-full w-full p-6 border border-[#E2E8F0] relative overflow-visible">
+                <div className="bg-white rounded-lg h-64 sm:h-96 lg:h-full w-full p-4 sm:p-6 border border-[#E2E8F0] relative overflow-visible">
                   <div className="w-full h-full bg-[#F1F5F9]"></div>
                   <div className="grid grid-cols-4 gap-2 absolute -bottom-4 left-6 right-6">
                     
@@ -198,7 +198,7 @@ export default function ItemDetailPage({
               </div>
 
               {/* Right: Key Details */}
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">
                   Key Details
                 </h2>
@@ -325,7 +325,7 @@ export default function ItemDetailPage({
             </div>
 
             {/* Tabs */}
-            <div className="bg-white rounded-lg border border-gray-200">
+            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
               <div className="border-b border-gray-200">
                 <div className="flex">
                   <button
@@ -366,9 +366,9 @@ export default function ItemDetailPage({
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {activeTab === "details" && (
-                  <div className="grid grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     <div>
                       <h3 className="text-sm font-semibold text-gray-900 mb-4">
                         Product Information

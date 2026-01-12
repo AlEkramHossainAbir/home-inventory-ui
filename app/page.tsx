@@ -61,8 +61,8 @@ export default function LoginPage() {
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gray-50">
-        <div className="w-full max-w-md">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-gray-50">
+        <div className="w-full max-w-md px-4 sm:px-0">
           {/* Logo and Header */}
           <div className="text-center mb-8 flex flex-col items-center gap-3 ">
             <div className="inline-flex items-center justify-center w-12 h-12 btn-primary rounded-xl">
@@ -85,8 +85,8 @@ export default function LoginPage() {
           </div>
 
           {/* Login Card */}
-          <div className="bg-white rounded-2xl shadow-sm p-8 border border-solid border-[#E2E8F0] login-container">
-            <h2 className="text-xl font-semibold heading-primary mb-6">
+          <div className="bg-white rounded-2xl shadow-sm p-6 sm:p-8 border border-solid border-[#E2E8F0] login-container">
+            <h2 className="text-lg sm:text-xl font-semibold heading-primary mb-6">
               Sign in to your account
             </h2>
 
@@ -281,11 +281,11 @@ export default function LoginPage() {
           </div>
 
           {/* Footer Links */}
-          <div className="mt-8 flex flex-col items-center justify-center gap-2 text-xs bottom-footer-text">
+          <div className="mt-6 sm:mt-8 flex flex-col items-center justify-center gap-2 text-xs bottom-footer-text">
             <div>
               <span>Version 1.2.4</span>
             </div>
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
               <a href="#" className="hover:text-gray-700">
                 Help Center
               </a>
